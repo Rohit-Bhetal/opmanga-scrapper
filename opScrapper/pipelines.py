@@ -20,7 +20,7 @@ class OpscrapperPipeline:
         service_path_json=os.getenv("FIREBASE_CREDENTIALS_PATH")
         cred=firebase_admin.credentials.Certificate(service_path_json)
         firebase_admin.initialize_app(cred, {
-            'databaseURL': 'https://manga-scrapy-default-rtdb.asia-southeast1.firebasedatabase.app/'
+            'databaseURL': os.getenv("FIREBASE_DB_URI")
         })
     def process_item(self, item, spider):
         ref=firebase_admin.db.reference('manga_data')
