@@ -1,0 +1,14 @@
+# Python virtual environment
+venv/
+__pycache__/
+
+# Scrapy project files that shouldn't be pushed
+*.log
+*.sqlite
+*.db
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+opScrapper/manga-scrapy-firebase-adminsdk-p41zm-04853ada62.json
+data.json
