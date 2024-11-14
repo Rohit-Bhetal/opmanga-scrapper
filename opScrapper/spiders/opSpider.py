@@ -16,12 +16,16 @@ class OpSpider(scrapy.Spider):
             return
         
         if manga_chaps:
+            i=0
             try:
                 for chaps_links in manga_chaps:
+                    i+=1
                     chaps_a_links=chaps_links.css('a').attrib['href']
                     chap_number=chaps_links.css('a::text').get().strip().split('Chapter ')[1].split(' ')[0]
                     chap_number=float(re.search(r'\d+(\.\d+)?',chap_number).group())
                     yield scrapy.Request(url=chaps_a_links,meta={'chapter_number': chap_number},callback=self.image_parse)
+                    if i==5 or i>5:
+                        break
                     
                     
             except Exception as e:
