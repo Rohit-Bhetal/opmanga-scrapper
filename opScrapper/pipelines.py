@@ -17,7 +17,7 @@ class OpscrapperPipeline:
     def __init__(self):
         #service=Path(__file__).parent
         #service_path_json= service/'manga-scrapy-firebase-adminsdk-p41zm-04853ada62.json'
-        service_path_json=os.getenv("FIREBASE_CREDENTIALS_PATH")
+        service_path_json=dict(os.getenv("FIREBASE_CREDENTIALS_PATH"))
         cred=firebase_admin.credentials.Certificate(service_path_json)
         firebase_admin.initialize_app(cred, {
             'databaseURL': os.getenv("FIREBASE_DB_URI")
